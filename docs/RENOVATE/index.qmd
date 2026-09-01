@@ -1,7 +1,7 @@
 ---
 title: "FFR or IVUS to Guide PCI"
 subtitle: "FLAVOUR Trial (NEJM 2022) Journal Review"
-author: "신상열"
+author: "신태희"
 format: revealjs
 ---
 
