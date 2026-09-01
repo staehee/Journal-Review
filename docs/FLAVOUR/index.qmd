@@ -1,20 +1,29 @@
 ---
 title: "FFR or IVUS to Guide PCI"
 subtitle: "FLAVOUR Trial (NEJM 2022) Journal Review"
-author: "신태희"
+author: "Taehee Shin"
 format: revealjs
 ---
 
-## Glossary (간단)
+## Glossary - 관상동맥질환 관련
 
-- **FFR**: 협착이 실제로 허혈을 유발하는지 보는 생리학적 검사
-- **IVUS**: 혈관 구조·스텐트 설치 상태를 보는 영상 검사
-- **PCI**: 스텐트 삽입 시술
+- **CAD(Coronary Artery Disease)**: Coronary Artery(관상동맥)이 plaque(죽상판) 축적으로 좁아지는 질병
+- **Ischemia**: 허혈. CAD로 인해 심장 근육에 혈액 공급이 부족해지는 상태
+- **PCI(Percutaneous Coronary Intervention)**: 이를 stent나 풍선으로 넓혀주는 시술. 경피적 관상동맥 중재술
+
+
+## Glossary - 진단 도구 
+
+- **FFR**: 협착이 실제로 혈류를 막아 ischemia를 유발하는지 보는 생리학적 검사
+- **IVUS**: 혈관 구조와 스텐트 설치 상태를 보는 형태학적 영상 검사. 혈관 내 초음파
+- **CAG**: 조영제로 혈관을 찍는 표준 기본 검사
 - **Intermediate stenosis**: CAG상 협착 40~70%, PCI 여부 판단이 애매한 구간
 
 ## Background
 
-- CAG만으론 intermediate stenosis에서 PCI 여부 결정 어려움
+- CAG: 협착이 70% 이상 -> PCI
+40% 이하 -> 약물치료
+- Intermediate Stenosis(40-70%)에서 PCI 여부 결정 어려움
 - FFR: 허혈 예측에 강함 / IVUS: 스텐트 설치 가이드에 강함
 - 두 방법 head-to-head 비교 연구 부재 → FLAVOUR trial
 
@@ -42,7 +51,6 @@ format: revealjs
 - POCO = 사망 + 심근경색 + 재혈관화 (24개월)
 - Noninferiority margin: **2.5%p**
 
----
 
 # 통계방법론
 
