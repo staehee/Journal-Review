@@ -1,1 +1,126 @@
+---
+title: "FFR or IVUS to Guide PCI"
+subtitle: "FLAVOUR Trial (NEJM 2022) Journal Review"
+author: "신상열"
+format: revealjs
+---
 
+## Glossary (간단)
+
+- **FFR**: 협착이 실제로 허혈을 유발하는지 보는 생리학적 검사
+- **IVUS**: 혈관 구조·스텐트 설치 상태를 보는 영상 검사
+- **PCI**: 스텐트 삽입 시술
+- **Intermediate stenosis**: CAG상 협착 40~70%, PCI 여부 판단이 애매한 구간
+
+## Background
+
+- CAG만으론 intermediate stenosis에서 PCI 여부 결정 어려움
+- FFR: 허혈 예측에 강함 / IVUS: 스텐트 설치 가이드에 강함
+- 두 방법 head-to-head 비교 연구 부재 → FLAVOUR trial
+
+## 연구 설계 변경 (주목할 점)
+
+- 원래 목적: FFR **우월성(superiority)** 입증
+- 2017년, IVUS 유리하다는 연구들 발표 → **비열등성(noninferiority)**으로 변경
+- → 발표에서 짚을 포인트: 가설 변경 시점이 IVUS에 유리한 근거가 나오던 때와 겹침
+
+## Method — Design
+
+- Investigator-initiated, RCT, **open-label**, 한/중 18개 기관
+- Intermediate stenosis 환자 1682명, FFR군 vs IVUS군 1:1 배정
+- 당뇨 유무로 층화
+
+## Method — PCI 기준
+
+| | FFR군 | IVUS군 |
+|---|---|---|
+| PCI 시행 | FFR ≤ 0.80 | MLA ≤3mm² 또는 3~4mm²+plaque>70% |
+| PCI 성공 | FFR ≥0.88 | plaque≤55% + MSA≥5.5mm² |
+
+## Primary Endpoint
+
+- POCO = 사망 + 심근경색 + 재혈관화 (24개월)
+- Noninferiority margin: **2.5%p**
+
+---
+
+# 통계방법론
+
+## 비열등성 시험이란?
+
+- "A가 B보다 낫다"가 아니라 "A가 B보다 크게 나쁘지 않다"를 증명
+- FFR은 스텐트/자원 소모가 적음 → 효과가 비슷하면 쓸 가치 있음
+- **Margin 2.5%p** = "이 정도 차이는 임상적으로 무시 가능"하다고 사전에 합의한 기준선 → 다소 주관적, 논쟁 지점
+
+## Kaplan-Meier & Cox model
+
+- **Kaplan-Meier**: 시간에 따라 사건 없이 생존한 비율을 보여주는 계단식 그래프. 중도탈락 환자도 정보 손실 없이 반영
+- **Cox 비례위험모형**: 그룹 간 사건 발생 위험을 비교, 결과값 = **Hazard Ratio(HR)**
+  - HR 0.96 → FFR군 위험이 IVUS군 대비 4% 낮음(거의 동일)
+- 기관(site), 당뇨 유무를 random effect로 보정
+
+## 비례위험 가정 검증
+
+- Cox 모형은 "위험비가 시간 내내 일정"하다고 가정
+- **Schoenfeld residual test**로 확인 → P=0.99 (가정 위반 근거 없음)
+- 저자들이 이 검증까지 챙긴 점은 통계적으로 꼼꼼
+
+## 비열등성 판정 방법
+
+- 차이(FFR−IVUS) = −0.4%p
+- 1-sided 95% CI 상한 = 1.8%p (< 2.5%p) → 통과
+- 1-sided **97.5%** CI 상한 = 2.2%p (더 보수적 기준으로도 통과)
+- 저자 스스로 더 엄격한 기준까지 병기 → 신중한 태도
+
+## ITT vs Per-protocol
+
+- **ITT**: 배정된 군 그대로 분석 (주 분석)
+- **Per-protocol**: 프로토콜 잘 지킨 환자만 (민감도 분석)
+- 두 결과 거의 동일 (8.1%vs8.5% / 8.2%vs8.7%) → 결과 신뢰도↑
+
+## 다중비교 미보정 (비판 포인트)
+
+- 2차 outcome들(개별 사망률, MI 등) 여러 개 동시 검정
+- 저자 스스로 **multiplicity 보정 안 했다고 명시**
+- → 2차 outcome CI는 확정적 근거 아님, 가설 생성용으로만 해석해야
+
+---
+
+# Results
+
+## Primary Outcome
+
+![](FLAVOUR%20Figure%201.jpeg)
+
+- FFR 8.1% vs IVUS 8.5%, HR 0.96
+- 비열등성 마진(2.5%p) 이내 → **noninferior**
+
+## PCI 시행률 차이
+
+- FFR 44.4% vs IVUS 65.3% (기준이 다르므로 당연)
+- 시술받은 환자 내 스텐트 개수/길이는 유사
+
+---
+
+# 비판적 검토
+
+## Limitations
+
+- **Open-label**: 시술자가 배정군 인지 → 판단에 영향 가능
+- 두 군 PCI 기준 자체가 다름 → 순수 head-to-head 비교인지 애매
+- Margin 2.5%p의 임상적 정당성 논쟁 (Correspondence 참고)
+- 2차 outcome 다중비교 미보정
+- 저위험군(SYNTAX<10)만 포함, 전원 아시아인 → 일반화 제한
+
+## Correspondence 핵심
+
+- Dr. Bittl: "PCI 하고 싶으면 IVUS, 하기 싫으면 FFR 잰다" — 임상 현실 지적
+- ACS 환자 subgroup 분석 요청 → 저자: 큰 차이 없음(10.0% vs 10.3%)
+
+---
+
+## Take-home
+
+- FFR-guided는 IVUS-guided 대비 **비열등**, 스텐트는 유의하게 적게 사용
+- 우열 문제라기보다 **상호보완적 도구**로 해석
+- 통계적으로 견고(Schoenfeld 검증, ITT+PP 이중 확인)하나 open-label/margin 설정은 해석 시 유의
