@@ -2,9 +2,10 @@
 title: "FFR or IVUS to Guide PCI"
 subtitle: "FLAVOUR Trial (NEJM 2022) Journal Review"
 author: "Taehee Shin"
-format: 
+format:
   revealjs:
     footer: "FLAVOUR"
+    transition: slide
 ---
 
 ## Glossary
@@ -166,16 +167,16 @@ $$
 
 ## Noninferiority P-value 산출 원리 {.scrollable}
 
-- 검정통계량: 
+- 검정통계량:
 $$
 Z = \frac{M - (\hat p_{FFR} - \hat p_{IVUS})}{SE(\hat p_{FFR}-\hat p_{IVUS})}
 $$
 - $M$=2.5%p, 관찰된 차이 = $-0.4\%p$
 - $P = 1-\Phi(Z)$ (표준정규분포 상측확률)
 
-- CI와 P-value는 수학적으로 동치: 
+- CI와 P-value는 수학적으로 동치:
   **CI 상한이 margin보다 작다 ⟺ P<0.05(해당 α)** — 같은 정보를 두 방식으로 표현한 것
-  
+
 - **주의**: P=0.01은 **절대위험차(KM 기반)**에 대한 검정.
   HR=0.96(Cox 기반)은 별도의 CI(상한 1.27/1.35)로 제시 → **독립적으로 일관된 결론**으로 결과 보강
 
