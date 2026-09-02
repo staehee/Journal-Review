@@ -173,20 +173,15 @@ Taehee Shin
 <section id="major-protocol-revision" class="slide level2">
 <h2>Major Protocol Revision</h2>
 <ul>
-<li>원래 목적(2016.7): FFR <strong>우월성(superiority)</strong> 입증</li>
-<li>시작 이후, IVUS 유리하다는 연구들 발표 → <strong>비열등성(noninferiority)</strong>으로 변경(2017.6)</li>
-<li>가설 변경 시점이 IVUS에 유리한 근거가 나오던 때와 겹침!!</li>
-</ul>
-</section>
-<section id="method-연구-설계" class="slide level2">
-<h2>Method — 연구 설계</h2>
-<ul>
-<li>Investigator-initiated</li>
-<li>Prospective</li>
-<li>Randomized</li>
-<li><strong>Open-label</strong></li>
-<li>Multinational(한/중 18개 기관)</li>
-<li>Noninferiority trial</li>
+<li><p>원래 목적(2016.7): FFR <strong>우월성(superiority)</strong> 입증</p></li>
+<li><p>시작 이후, IVUS 유리하다는 연구들 발표 → <strong>비열등성(noninferiority)</strong>으로 변경(2017.6)</p></li>
+<li><p>사전 공개 변경. 실제 데이터 확인 전에 이뤄짐 ## Method — 연구 설계</p></li>
+<li><p>Investigator-initiated</p></li>
+<li><p>Prospective</p></li>
+<li><p>Randomized</p></li>
+<li><p><strong>Open-label</strong></p></li>
+<li><p>Multinational(한/중 18개 기관)</p></li>
+<li><p>Noninferiority trial</p></li>
 </ul>
 </section>
 <section id="method-대상" class="slide level2">
@@ -255,6 +250,20 @@ Taehee Shin
 <li>Power(검정력): 실제로 차이가 있을 때 그 차이를 통계적으로 잡아낼 확률. Reject H0 when H1 is true</li>
 <li>FFR군 사건 발생률 10% vs.&nbsp;IVUS군 12% (가정)</li>
 <li>90% 검정력 확보 → 1700명 필요 → 최종적으로 1682명 등록(FFR 838명, IVUS 844명)</li>
+<li>(참고: 최초 프로토콜의 superiority 설계 당시 계획 표본은 4400명 → noninferiority로 전환 후 margin·가정 event rate이 바뀌며 1700명으로 축소)</li>
+</ul>
+</section>
+<section id="statistical-analysis" class="slide level2">
+<h2>Statistical Analysis</h2>
+<ul>
+<li>범주형 변수 비교 → <strong>Chi-square test</strong></li>
+<li>연속형 변수 비교 → <strong>T-test</strong></li>
+<li>Primary endpoint → <strong>Log-rank test</strong> + <strong>Cox proportional-hazards regression</strong> 병행
+<ul>
+<li>Log-rank: 두 Kaplan-Meier 곡선 자체를 비모수적으로 비교</li>
+<li>Cox: site, 당뇨 유무를 보정한 회귀모형으로 HR 산출</li>
+<li>두 방법이 유사한 결론을 내는지 교차 확인하는 역할</li>
+</ul></li>
 </ul>
 </section>
 <section id="kaplan-meier-cox-model" class="slide level2">
@@ -283,6 +292,15 @@ Taehee Shin
 <li>1-sided <strong>97.5%</strong> CI 상한 = 2.2%p (&lt; 2.5%p) → 더 보수적 기준으로도 통과</li>
 </ul>
 </section>
+<section id="종-오류율-설정---왜-단측1-sided-5인가" class="slide level2">
+<h2>1종 오류율 설정 - 왜 단측(1-sided) 5%인가</h2>
+<ul>
+<li>표준적인 noninferiority trial: 단측 <strong>2.5%</strong>(양측 5%에 대응) 사용이 관행</li>
+<li>해당 연구: 단측 <strong>5.0%</strong> 사용 → 사실상 양측 10%에 해당하는 <strong>더 관대한 기준</strong></li>
+<li>저자 근거: 의료기기 평가에서 종종 쓰이는 관행적 기준</li>
+<li>보완: 더 보수적인 <strong>단측 97.5% CI</strong>(=단측 2.5%에 해당)도 함께 보고</li>
+</ul>
+</section>
 <section id="itt-vs-per-protocol" class="slide level2">
 <h2>ITT vs Per-protocol</h2>
 <ul>
@@ -292,6 +310,14 @@ Taehee Shin
 </ul></li>
 <li><strong>Per-protocol</strong>: 프로토콜 잘 지킨 환자만 남겨 분석 (민감도 분석으로 병행)</li>
 <li>두 결과 거의 동일 (8.1% vs 8.5% / 8.2% vs 8.7%) → 결과 신뢰도↑</li>
+</ul>
+</section>
+<section id="결측치-처리" class="slide level2">
+<h2>결측치 처리</h2>
+<ul>
+<li>Endpoint 결측치는 <strong>제거</strong>(complete case analysis)</li>
+<li>민감도 분석으로 결측치의 영향을 별도 확인</li>
+<li>실제 follow-up 완료율 <strong>99.2%</strong> (14명만 손실) → 결측 자체가 결과에 미친 영향은 제한적</li>
 </ul>
 </section>
 <section id="multiplicity-problem" class="slide level2">
@@ -347,14 +373,26 @@ Taehee Shin
 </ul></li>
 <li>Noninferiority margin 2.5%p의 임상적 정당성 논쟁</li>
 <li>2차 outcome 다중비교 미보정</li>
+</ul>
+</section>
+<section id="limitations-1" class="slide level2">
+<h2>Limitations</h2>
+<ul>
 <li>연구대상: 저위험군(SYNTAX&lt;10)만 포함, 전원 아시아인 → 일반화 제한</li>
+<li>Plaque의 성상(characteristics)은 PCI 기준에 반영되지 않음</li>
+<li>FFR/IVUS 외 nonhyperemic pressure ratio, OCT, NIRS-IVUS 등과의 비교는 없음</li>
+<li>FFR+IVUS <strong>병용군</strong>이 연구에 없어, 두 검사를 함께 쓰는 전략의 효과는 확인 불가</li>
 </ul>
 </section>
 <section id="correspondence" class="slide level2">
 <h2>Correspondence</h2>
 <ul>
-<li>“PCI 하고 싶으면 IVUS, 하기 싫으면 FFR 잰다”</li>
-<li>검사 선택 자체가 이미 시술자의 의도 반영(현실적 문제)</li>
+<li>“PCI 하고 싶으면 IVUS, 하기 싫으면 FFR 잰다” → 검사 선택 자체가 이미 시술자의 의도 반영(현실적 문제)</li>
+<li>IVUS군 사망률이 더 높음(1.3% vs 2.3%) - 출혈이 원인 아닌가?
+<ul>
+<li><strong>다중비교 미보정</strong> 상태의 secondary outcome이라 과대해석 주의</li>
+<li>저자: 출혈은 실제로 더 있었으나, 원래 출혈 위험군에서 발생</li>
+</ul></li>
 <li>ACS(급성관상동맥증후군) <sup>1</sup> 환자 따로 subgroup 분석 요청 → 저자: 큰 차이 없음(10.0% vs 10.3%)</li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>연구 대상의 약 30%. FFR은 원래 안정형 관상동맥질환에서 검증된 지표</p></li></ol></aside></section>

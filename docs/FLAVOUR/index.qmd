@@ -35,7 +35,8 @@ format:
 
 - 원래 목적(2016.7): FFR **우월성(superiority)** 입증
 - 시작 이후, IVUS 유리하다는 연구들 발표 → **비열등성(noninferiority)**으로 변경(2017.6)
-- 가설 변경 시점이 IVUS에 유리한 근거가 나오던 때와 겹침!!
+- 사전 공개 변경. 실제 데이터 확인 전에 이뤄짐
+
 
 ## Method — 연구 설계
 
@@ -83,6 +84,17 @@ format:
 - Power(검정력): 실제로 차이가 있을 때 그 차이를 통계적으로 잡아낼 확률. Reject H0 when H1 is true
 - FFR군 사건 발생률 10% vs. IVUS군 12% (가정)
 - 90% 검정력 확보 → 1700명 필요 → 최종적으로 1682명 등록(FFR 838명, IVUS 844명)
+- (참고: 최초 프로토콜의 superiority 설계 당시 계획 표본은 4400명 → 
+  noninferiority로 전환 후 margin·가정 event rate이 바뀌며 1700명으로 축소)
+
+## Statistical Analysis
+
+- 범주형 변수 비교 → **Chi-square test**
+- 연속형 변수 비교 → **T-test**
+- Primary endpoint → **Log-rank test** + **Cox proportional-hazards regression** 병행
+  - Log-rank: 두 Kaplan-Meier 곡선 자체를 비모수적으로 비교
+  - Cox: site, 당뇨 유무를 보정한 회귀모형으로 HR 산출
+  - 두 방법이 유사한 결론을 내는지 교차 확인하는 역할
 
 ## Kaplan-Meier & Cox model
 
@@ -102,12 +114,25 @@ format:
 - 1-sided 95% CI 상한 = 1.8%p (< 2.5%p) → 통과
 - 1-sided **97.5%** CI 상한 = 2.2%p (< 2.5%p) → 더 보수적 기준으로도 통과
 
+## 왜 단측(1-sided) 5%인가
+
+- 표준적인 noninferiority trial: 단측 **2.5%**(양측 5%에 대응) 사용이 관행
+- 해당 연구: 단측 **5.0%** 사용 → 사실상 양측 10%에 해당하는 **더 관대한 기준**
+- 저자 근거: 의료기기 평가에서 종종 쓰이는 관행적 기준
+- 보완: 더 보수적인 **단측 97.5% CI**(=단측 2.5%에 해당)도 함께 보고
+
 ## ITT vs Per-protocol
 
 - **ITT(Intention-to-Treat)**: 처음 배정된 군 그대로 분석. 중간에 프로토콜을 어겼거나 실제도 다르게 치료받은 환자도 배정된 군으로 계산 → 무작위 배정의 장점 유지
   - 표준적 1차 분석법 (주 분석)
 - **Per-protocol**: 프로토콜 잘 지킨 환자만 남겨 분석 (민감도 분석으로 병행)
 - 두 결과 거의 동일 (8.1% vs 8.5% / 8.2% vs 8.7%) → 결과 신뢰도↑
+
+## 결측치 처리
+
+- Endpoint 결측치는 **제거**(complete case analysis)
+- 민감도 분석으로 결측치의 영향을 별도 확인
+- 실제 follow-up 완료율 **99.2%** (14명만 손실) → 결측 자체가 결과에 미친 영향은 제한적
 
 ## Multiplicity Problem
 
@@ -145,12 +170,21 @@ format:
   - IVUS군의 PCI 시행률이 유독 높았던 것: IVUS 자체의 우수성 x, 현재 IVUS의 기준이 상대적으로 느슨
 - Noninferiority margin 2.5%p의 임상적 정당성 논쟁
 - 2차 outcome 다중비교 미보정
+
+## Limitations
+
 - 연구대상: 저위험군(SYNTAX<10)만 포함, 전원 아시아인 → 일반화 제한
+- Plaque의 성상(characteristics)은 PCI 기준에 반영되지 않음
+- FFR/IVUS 외 nonhyperemic pressure ratio, OCT, NIRS-IVUS 등과의 비교는 없음
+- FFR+IVUS **병용군**이 연구에 없어, 두 검사를 함께 쓰는 전략의 효과는 확인 불가
 
 ## Correspondence
 
 - "PCI 하고 싶으면 IVUS, 하기 싫으면 FFR 잰다"
-- 검사 선택 자체가 이미 시술자의 의도 반영(현실적 문제)
+  → 검사 선택 자체가 이미 시술자의 의도 반영(현실적 문제)
+- IVUS군 사망률이 더 높음(1.3% vs 2.3%) - 출혈이 원인 아닌가?
+  - **다중비교 미보정** 상태의 secondary outcome이라 과대해석 주의
+  - 저자: 출혈은 실제로 더 있었으나, 원래 출혈 위험군에서 발생
 - ACS(급성관상동맥증후군) ^[연구 대상의 약 30%. FFR은 원래 안정형 관상동맥질환에서 검증된 지표] 환자 따로 subgroup 분석 요청 → 저자: 큰 차이 없음(10.0% vs 10.3%)
 
 ## Take-home Message
