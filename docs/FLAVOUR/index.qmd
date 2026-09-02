@@ -96,16 +96,14 @@ format:
   - Cox: site, 당뇨 유무를 보정한 회귀모형으로 HR 산출
   - 두 방법이 유사한 결론을 내는지 교차 확인하는 역할
 
-## Kaplan-Meier & Cox model
+## Kaplan-Meier & Cox model {.scrollable}
 
 - **Kaplan-Meier**: 시간에 따라 특정 사건 없이 생존한 비율을 보여주는 계단식 그래프. 중도탈락(censoring) 환자도 정보 손실 없이 반영
 - **Cox 비례위험모형**: 그룹 간 사건 발생 위험을 시간에 따라 비교, 결과값 = **Hazard Ratio(HR)**
   - HR 0.96 → FFR군 위험이 IVUS군 대비 4% 낮음(거의 동일)
   - 연구 기관(site), 당뇨 유무를 random effect로 보정
 
-## Kaplan-Meier & Cox model
-
-![](FLAVOUR%20Figure1.png){fig-align="center" width="84%"}
+![](FLAVOUR%20Figure1.png){.nostretch fig-align="center" width="100%"}
 
 ## 비례위험 가정 검증
 
@@ -146,11 +144,11 @@ format:
 
 # Results
 
-## Baseline 특성
+## Baseline 특성 {.scrollable}
 
 - 두 군의 평균 연령, 당뇨병 유병률 등 기본 특성이 잘 균형잡혀 있음
 
-![](FLAVOUR%20Table1.png){fig-align="center" width="72%"}
+![](FLAVOUR%20Table1.png){.nostretch fig-align="center" width="100%"}
 
 ## PCI 시행률
 
@@ -158,12 +156,12 @@ format:
 - FFR 44.4% vs IVUS 65.3% (기준이 다르므로 당연)
 - 다만 실제로 시술받은 환자 내 스텐트 개수/길이는 유사
 
-## Primary Outcome
+## Primary Outcome {.scrollable}
 
 - FFR 8.1% vs IVUS 8.5%, HR 0.96
 - 비열등성 마진(2.5%p) 이내 → **noninferior**(P=0.01)
 
-![](FLAVOUR%20Table3.png){fig-align="center" width="78%"}
+![](FLAVOUR%20Table3.png){.nostretch fig-align="center" width="100%"}
 
 ## Secondary Outcome
 
