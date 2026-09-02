@@ -103,6 +103,10 @@ format:
   - HR 0.96 → FFR군 위험이 IVUS군 대비 4% 낮음(거의 동일)
   - 연구 기관(site), 당뇨 유무를 random effect로 보정
 
+## Kaplan-Meier & Cox model
+
+![](FLAVOUR%20Figure1.png){fig-align="center" width="84%"}
+
 ## 비례위험 가정 검증
 
 - Cox 모형: "HR이 시간 내내 일정하게 유지"된다는 전제 위에서만 성립
@@ -146,19 +150,23 @@ format:
 
 - 두 군의 평균 연령, 당뇨병 유병률 등 기본 특성이 잘 균형잡혀 있음
 
+![](FLAVOUR%20Table1.png){fig-align="center" width="72%"}
+
 ## PCI 시행률
 
 - lesion 길이, 혈관 직경, 협착 정도는 유의한 차이 x
 - FFR 44.4% vs IVUS 65.3% (기준이 다르므로 당연)
 - 다만 실제로 시술받은 환자 내 스텐트 개수/길이는 유사
 
-## Primary & Secondary Outcomes
+## Primary Outcome
 
-- Primary:
-  - FFR 8.1% vs IVUS 8.5%, HR 0.96
-  - 비열등성 마진(2.5%p) 이내 → **noninferior**(P=0.01)
+- FFR 8.1% vs IVUS 8.5%, HR 0.96
+- 비열등성 마진(2.5%p) 이내 → **noninferior**(P=0.01)
 
-- Secondary:
+![](FLAVOUR%20Table3.png){fig-align="center" width="78%"}
+
+## Secondary Outcome
+
   - 당뇨 유무, ITT vs Per-protocol 분석법 차이 모두 결과에 영향 x
   - PCI 성공률도 유의한 차이 x(50.1% vs 54.8%)
   - 프로토콜에 명시된 adenosine 대신 nicorandil 사용한 288 제외한 사후분석(post hoc)에서도 일관된 결과
