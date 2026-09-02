@@ -62,14 +62,13 @@ format:
 - 층별로 1:1 배정을 맞추기 위해 일반적으로 **permuted block randomization**을 각 층 내에서 적용
   (블록 크기는 무작위/비공개 → 시술자가 다음 배정을 예측하지 못하게 함)
 
-**왜 두 요인으로 층화했나?**
 - Site: 기관마다 시술 practice pattern이 달라 결과에 영향 → 이질성 통제
 - 당뇨: 스텐트 재협착의 강력한 예후인자 → 두 군에 고르게 배분 필요
 
 ## Method — PCI 기준
 
 | | FFR군 | IVUS군 |
-|---|---|---|
+|--|---|----|
 | PCI 시행 | FFR ≤ 0.80 | MLA(최소내강면적)) ≤3mm² 또는 3~4mm² & plaque>70% |
 | PCI 성공 | 시술 후 FFR ≥0.88 또는 stent 양끝 FFR차 <0.05 | plaque≤55% & MSA≥5.5mm² |
 
@@ -93,20 +92,15 @@ format:
 ## Sample Size
 
 Noninferiority trial, 두 비율(proportion) 비교:
-
 $$
 n_{\text{per group}} = \frac{(z_{1-\alpha} + z_{1-\beta})^2 \left[p_1(1-p_1) + p_2(1-p_2)\right]}{\left[M + (p_1 - p_2)\right]^2}
 $$
-
 - $p_1$ = IVUS군 가정 사건율 (12%), $p_2$ = FFR군 가정 사건율 (10%)
 - $M$ = noninferiority margin (2.5%p)
 - $z_{1-\alpha}$: 단측 5% → 1.645, $z_{1-\beta}$: power 90% → 1.282
-
 $$
 n = \frac{(1.645+1.282)^2 [0.10(0.90)+0.12(0.88)]}{(0.025+0.02)^2} \approx 828 \text{명/군}
 $$
-
-→ 논문 실제 요구치 850명/군(총 1700명)과 근사 (round-up, 소프트웨어별 미세 차이)
 
 ## Statistical Analysis
 
@@ -117,14 +111,12 @@ $$
   - Cox: site, 당뇨 유무를 보정한 회귀모형으로 HR 산출
   - 두 방법이 유사한 결론을 내는지 교차 확인하는 역할
 
-## Kaplan-Meier
+## Kaplan-Meier {.scrollable}
 
 - **Kaplan-Meier**: 시간에 따라 특정 사건 없이 생존한 비율을 보여주는 계단식 그래프. 중도탈락(censoring) 환자도 정보 손실 없이 반영
-
 $$
 \hat{S}(t) = \prod_{t_i \le t} \left(1 - \frac{d_i}{n_i}\right)
 $$
-
 - $t_i$: 사건 발생 시점들, $d_i$: $t_i$ 시점의 사건 수, $n_i$: $t_i$ 직전 위험집단 크기(at risk)
 - **Product-limit estimator**: 매 사건 시점마다 "그때까지 생존할 조건부 확률"을 곱해나감
 - **중도절단(censoring)**: 추적 소실·24개월 이전 종료 환자는 $n_i$에는 포함되지만 $d_i$엔 안 잡힘
@@ -134,17 +126,16 @@ $$
 ## Cox model {.scrollable}
 
 - **Cox 비례위험모형**: 그룹 간 사건 발생 위험을 시간에 따라 비교, 결과값 = **Hazard Ratio(HR)**
-
-## Cox Model — HR은 어떻게 나오나
-
 $$
 h(t \mid X) = h_0(t) \cdot \exp(\beta_1 X_1 + \beta_2 X_2 + \cdots)
 $$
-
 - $h_0(t)$: baseline hazard (특정 분포 가정 안 함 → semi-parametric)
 - $X_1$ = 치료군(FFR=1, IVUS=0) 등 공변량
 - $\beta_1$을 **partial likelihood**를 최대화해서 추정 (baseline hazard는 추정 안 하고 소거)
 - $\text{HR} = e^{\hat\beta_1}$ → 이 연구: $e^{\hat\beta_1}=0.96$
+
+
+## Cox model {.scrollable}
 
 **Random effect (frailty) 사용 이유**
 - Site 18개를 각각 dummy 변수로 넣으면 자유도 낭비 + 과적합
@@ -173,6 +164,21 @@ $$
 - 해당 연구: 단측 **5.0%** 사용 → 사실상 양측 10%에 해당하는 **더 관대한 기준**
 - 저자 근거: 의료기기 평가에서 종종 쓰이는 관행적 기준
 - 보완: 더 보수적인 **단측 97.5% CI**(=단측 2.5%에 해당)도 함께 보고
+
+## Noninferiority P-value 산출 원리 {.scrollable}
+
+- 검정통계량: 
+$$
+Z = \frac{M - (\hat p_{FFR} - \hat p_{IVUS})}{SE(\hat p_{FFR}-\hat p_{IVUS})}
+$$
+- $M$=2.5%p, 관찰된 차이 = $-0.4\%p$
+- $P = 1-\Phi(Z)$ (표준정규분포 상측확률)
+
+- CI와 P-value는 수학적으로 동치: 
+  **CI 상한이 margin보다 작다 ⟺ P<0.05(해당 α)** — 같은 정보를 두 방식으로 표현한 것
+  
+- **주의**: 이 P=0.01은 **절대위험차(KM 기반)**에 대한 검정
+  HR=0.96(Cox 기반)은 별도의 CI(상한 1.27/1.35)로 제시 — 두 지표(절대차/상대위험)가 **독립적으로 일관된 결론**을 내며 결과를 보강
 
 ## ITT vs Per-protocol
 
@@ -244,7 +250,7 @@ $$
   - 저자: 출혈은 실제로 더 있었으나, 원래 출혈 위험군에서 발생
 - ACS(급성관상동맥증후군) ^[연구 대상의 약 30%. FFR은 원래 안정형 관상동맥질환에서 검증된 지표] 환자 따로 subgroup 분석 요청 → 저자: 큰 차이 없음(10.0% vs 10.3%)
 
-## Take-home Message
+## Take-home
 
 - Intermediate stenosis 환자에서 FFR-guided는 IVUS-guided 대비 **비열등**, 스텐트는 유의하게 적게 사용
 - 우열 문제라기보다 **상호보완적 도구**로 해석
