@@ -55,6 +55,17 @@ format:
 - FFR군 vs. IVUS군 1:1 랜덤 배정
 - 당뇨 유무로 statified
 
+## Randomization
+
+- **Stratification factor**: 연구기관(site) × 당뇨 유무 → 조합별로 층 구성
+- Web-based 프로그램으로 **concealed allocation**(배정순서 사전 예측 불가)
+- 층별로 1:1 배정을 맞추기 위해 일반적으로 **permuted block randomization**을 각 층 내에서 적용
+  (블록 크기는 무작위/비공개 → 시술자가 다음 배정을 예측하지 못하게 함)
+
+**왜 두 요인으로 층화했나?**
+- Site: 기관마다 시술 practice pattern이 달라 결과에 영향 → 이질성 통제
+- 당뇨: 스텐트 재협착의 강력한 예후인자 → 두 군에 고르게 배분 필요
+
 ## Method — PCI 기준
 
 | | FFR군 | IVUS군 |
@@ -79,13 +90,23 @@ format:
 - **Margin 2.5%p** = "이 정도 차이는 임상적으로 무시 가능"하다고 사전에 합의한 기준선 → 다소 주관적, 논쟁 지점
 - FFR군의 사건 발생률이 IVUS군보다 2.5%p 이상 높지만 않으면 비열등하다고 인정
 
-## Power
+## Sample Size
 
-- Power(검정력): 실제로 차이가 있을 때 그 차이를 통계적으로 잡아낼 확률. Reject H0 when H1 is true
-- FFR군 사건 발생률 10% vs. IVUS군 12% (가정)
-- 90% 검정력 확보 → 1700명 필요 → 최종적으로 1682명 등록(FFR 838명, IVUS 844명)
-- (참고: 최초 프로토콜의 superiority 설계 당시 계획 표본은 4400명 → 
-  noninferiority로 전환 후 margin·가정 event rate이 바뀌며 1700명으로 축소)
+Noninferiority trial, 두 비율(proportion) 비교:
+
+$$
+n_{\text{per group}} = \frac{(z_{1-\alpha} + z_{1-\beta})^2 \left[p_1(1-p_1) + p_2(1-p_2)\right]}{\left[M + (p_1 - p_2)\right]^2}
+$$
+
+- $p_1$ = IVUS군 가정 사건율 (12%), $p_2$ = FFR군 가정 사건율 (10%)
+- $M$ = noninferiority margin (2.5%p)
+- $z_{1-\alpha}$: 단측 5% → 1.645, $z_{1-\beta}$: power 90% → 1.282
+
+$$
+n = \frac{(1.645+1.282)^2 [0.10(0.90)+0.12(0.88)]}{(0.025+0.02)^2} \approx 828 \text{명/군}
+$$
+
+→ 논문 실제 요구치 850명/군(총 1700명)과 근사 (round-up, 소프트웨어별 미세 차이)
 
 ## Statistical Analysis
 
@@ -96,10 +117,40 @@ format:
   - Cox: site, 당뇨 유무를 보정한 회귀모형으로 HR 산출
   - 두 방법이 유사한 결론을 내는지 교차 확인하는 역할
 
-## Kaplan-Meier & Cox model {.scrollable}
+## Kaplan-Meier
 
 - **Kaplan-Meier**: 시간에 따라 특정 사건 없이 생존한 비율을 보여주는 계단식 그래프. 중도탈락(censoring) 환자도 정보 손실 없이 반영
+
+$$
+\hat{S}(t) = \prod_{t_i \le t} \left(1 - \frac{d_i}{n_i}\right)
+$$
+
+- $t_i$: 사건 발생 시점들, $d_i$: $t_i$ 시점의 사건 수, $n_i$: $t_i$ 직전 위험집단 크기(at risk)
+- **Product-limit estimator**: 매 사건 시점마다 "그때까지 생존할 조건부 확률"을 곱해나감
+- **중도절단(censoring)**: 추적 소실·24개월 이전 종료 환자는 $n_i$에는 포함되지만 $d_i$엔 안 잡힘
+  → 정보를 버리지 않고 "그 시점까지는 무사했다"는 사실만 반영
+- 신뢰구간은 보통 **Greenwood's formula**로 분산 추정 후 산출
+
+## Cox model {.scrollable}
+
 - **Cox 비례위험모형**: 그룹 간 사건 발생 위험을 시간에 따라 비교, 결과값 = **Hazard Ratio(HR)**
+
+## Cox Model — HR은 어떻게 나오나
+
+$$
+h(t \mid X) = h_0(t) \cdot \exp(\beta_1 X_1 + \beta_2 X_2 + \cdots)
+$$
+
+- $h_0(t)$: baseline hazard (특정 분포 가정 안 함 → semi-parametric)
+- $X_1$ = 치료군(FFR=1, IVUS=0) 등 공변량
+- $\beta_1$을 **partial likelihood**를 최대화해서 추정 (baseline hazard는 추정 안 하고 소거)
+- $\text{HR} = e^{\hat\beta_1}$ → 이 연구: $e^{\hat\beta_1}=0.96$
+
+**Random effect (frailty) 사용 이유**
+- Site 18개를 각각 dummy 변수로 넣으면 자유도 낭비 + 과적합
+- 대신 site별 **frailty term**(공유 무작위효과)을 hazard에 곱해 병원 간 이질성을 압축적으로 보정
+- 당뇨 유무도 같은 방식으로 random effect 처리
+
   - HR 0.96 → FFR군 위험이 IVUS군 대비 4% 낮음(거의 동일)
   - 연구 기관(site), 당뇨 유무를 random effect로 보정
 
