@@ -142,16 +142,17 @@ Taehee Shin
 </div>
 
 </section>
-<section id="glossary---관상동맥질환-관련" class="slide level2">
-<h2>Glossary - 관상동맥질환 관련</h2>
+<section id="glossary" class="slide level2">
+<h2>Glossary</h2>
 <ul>
 <li><strong>CAD(Coronary Artery Disease)</strong>: Coronary Artery(관상동맥)이 plaque(죽상판) 축적으로 좁아지는 질병</li>
 <li><strong>Ischemia</strong>: 허혈. CAD로 인해 심장 근육에 혈액 공급이 부족해지는 상태</li>
 <li><strong>PCI(Percutaneous Coronary Intervention)</strong>: 이를 stent나 풍선으로 넓혀주는 시술. 경피적 관상동맥 중재술</li>
+<li><strong>Revascularization</strong>: 재혈관화. 좁아지거나 막힌 혈관으로 인해 피가 통하지 않는 부위에 혈류를 다시 회복시키는 치료법</li>
 </ul>
 </section>
-<section id="glossary---진단-도구" class="slide level2">
-<h2>Glossary - 진단 도구</h2>
+<section id="glossary-1" class="slide level2">
+<h2>Glossary</h2>
 <ul>
 <li><strong>FFR(Fractional Flow Reserve)</strong>: 협착이 실제로 혈류를 막아 ischemia를 유발하는지 보는 생리학적 검사</li>
 <li><strong>IVUS(Intravascular Ultrasonography)</strong>: 혈관 구조와 스텐트 설치 상태를 보는 형태학적 영상 검사. 혈관 내 초음파</li>
@@ -162,16 +163,11 @@ Taehee Shin
 <section id="background" class="slide level2">
 <h2>Background</h2>
 <ul>
-<li>CAG: 협착이 70% 이상 -&gt; PCI 40% 이하 -&gt; 약물치료</li>
-<li>Intermediate Stenosis(40-70%)에서 PCI 여부 결정 어려움</li>
-</ul>
-</section>
-<section id="background-1" class="slide level2">
-<h2>Background</h2>
-<ul>
-<li>FFR: 허혈 예측에 강함. “허혈을 일으키는가”</li>
-<li>IVUS: 스텐트 설치 가이드에 강함. “스텐트가 잘 들어갔는가”</li>
-<li>두 방법 head-to-head 비교 연구 부재 → FLAVOUR trial</li>
+<li><p>CAG: 협착이 70% 이상 → PCI, 40% 이하 → 약물치료</p></li>
+<li><p>Intermediate Stenosis(40-70%)에서 PCI 여부 결정 어려움</p></li>
+<li><p>FFR: 허혈 예측에 강함. “허혈을 일으키는가”</p></li>
+<li><p>IVUS: 스텐트 설치 가이드에 강함. “스텐트가 잘 들어갔는가”</p></li>
+<li><p>두 방법 head-to-head 비교 연구 부재 → FLAVOUR trial</p></li>
 </ul>
 </section>
 <section id="major-protocol-revision" class="slide level2">
@@ -234,7 +230,7 @@ Taehee Shin
 <section id="endpoint" class="slide level2">
 <h2>Endpoint</h2>
 <ul>
-<li>Primary: POCO(Patient-Oriented Composite Outcome) = Death + Myocardial Infarction + Revascularization (24개월)</li>
+<li>Primary: POCO(Patient-Oriented Composite Outcome) = Death + Myocardial Infarction(MI) + Revascularization (24개월)</li>
 <li>Secondary: Primary + stent 개수 + 뇌졸중 + 환자결과보고서(SAQ)</li>
 </ul>
 </section>
@@ -258,7 +254,7 @@ Taehee Shin
 <ul>
 <li>Power(검정력): 실제로 차이가 있을 때 그 차이를 통계적으로 잡아낼 확률. Reject H0 when H1 is true</li>
 <li>FFR군 사건 발생률 10% vs.&nbsp;IVUS군 12% (가정)</li>
-<li>90% 검정력 확보 -&gt; 1700명 필요 -&gt; 최종적으로 1682명 등록(FFR 838명, IVUS 844명)</li>
+<li>90% 검정력 확보 → 1700명 필요 → 최종적으로 1682명 등록(FFR 838명, IVUS 844명)</li>
 </ul>
 </section>
 <section id="kaplan-meier-cox-model" class="slide level2">
@@ -284,87 +280,98 @@ Taehee Shin
 <ul>
 <li>차이(FFR−IVUS) = −0.4%p</li>
 <li>1-sided 95% CI 상한 = 1.8%p (&lt; 2.5%p) → 통과</li>
-<li>1-sided <strong>97.5%</strong> CI 상한 = 2.2%p (더 보수적 기준으로도 통과)</li>
-<li>저자 스스로 더 엄격한 기준까지 병기 → 신중한 태도</li>
+<li>1-sided <strong>97.5%</strong> CI 상한 = 2.2%p (&lt; 2.5%p) → 더 보수적 기준으로도 통과</li>
 </ul>
 </section>
 <section id="itt-vs-per-protocol" class="slide level2">
 <h2>ITT vs Per-protocol</h2>
 <ul>
-<li><strong>ITT</strong>: 배정된 군 그대로 분석 (주 분석)</li>
-<li><strong>Per-protocol</strong>: 프로토콜 잘 지킨 환자만 (민감도 분석)</li>
-<li>두 결과 거의 동일 (8.1%vs8.5% / 8.2%vs8.7%) → 결과 신뢰도↑</li>
+<li><strong>ITT(Intention-to-Treat)</strong>: 처음 배정된 군 그대로 분석. 중간에 프로토콜을 어겼거나 실제도 다르게 치료받은 환자도 배정된 군으로 계산 → 무작위 배정의 장점 유지
+<ul>
+<li>표준적 1차 분석법 (주 분석)</li>
+</ul></li>
+<li><strong>Per-protocol</strong>: 프로토콜 잘 지킨 환자만 남겨 분석 (민감도 분석으로 병행)</li>
+<li>두 결과 거의 동일 (8.1% vs 8.5% / 8.2% vs 8.7%) → 결과 신뢰도↑</li>
 </ul>
 </section>
-<section id="다중비교-미보정-비판-포인트" class="slide level2">
-<h2>다중비교 미보정 (비판 포인트)</h2>
+<section id="multiplicity-problem" class="slide level2">
+<h2>Multiplicity Problem</h2>
 <ul>
-<li>2차 outcome들(개별 사망률, MI 등) 여러 개 동시 검정</li>
+<li>Multiplicity(다중비교): 한 연구에서 여러 개의 2차 outcome(개별 사망률, MI 등)을 동시 검정 → 우연히 유의미해 보이는 결과가 나올 확률↑</li>
 <li>저자 스스로 <strong>multiplicity 보정 안 했다고 명시</strong></li>
 <li>→ 2차 outcome CI는 확정적 근거 아님, 가설 생성용으로만 해석해야</li>
 </ul>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="results" class="title-slide slide level1 center">
 <h1>Results</h1>
 
 </section>
-<section id="primary-outcome" class="slide level2">
-<h2>Primary Outcome</h2>
-
-<img data-src="FLAVOUR%20Figure%201.jpeg" class="r-stretch"><ul>
-<li>FFR 8.1% vs IVUS 8.5%, HR 0.96</li>
-<li>비열등성 마진(2.5%p) 이내 → <strong>noninferior</strong></li>
-</ul>
-</section>
-<section id="pci-시행률-차이" class="slide level2">
-<h2>PCI 시행률 차이</h2>
+<section id="baseline-특성" class="slide level2">
+<h2>Baseline 특성</h2>
 <ul>
-<li>FFR 44.4% vs IVUS 65.3% (기준이 다르므로 당연)</li>
-<li>시술받은 환자 내 스텐트 개수/길이는 유사</li>
+<li>두 군의 평균 연령, 당뇨병 유병률 등 기본 특성이 잘 균형잡혀 있음</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="비판적-검토" class="title-slide slide level1 center">
-<h1>비판적 검토</h1>
-
+<section id="pci-시행률" class="slide level2">
+<h2>PCI 시행률</h2>
+<ul>
+<li>lesion 길이, 혈관 직경, 협착 정도는 유의한 차이 x</li>
+<li>FFR 44.4% vs IVUS 65.3% (기준이 다르므로 당연)</li>
+<li>다만 실제로 시술받은 환자 내 스텐트 개수/길이는 유사</li>
+</ul>
+</section>
+<section id="primary-secondary-outcomes" class="slide level2">
+<h2>Primary &amp; Secondary Outcomes</h2>
+<ul>
+<li>Primary:
+<ul>
+<li>FFR 8.1% vs IVUS 8.5%, HR 0.96</li>
+<li>비열등성 마진(2.5%p) 이내 → <strong>noninferior</strong>(P=0.01)</li>
+</ul></li>
+<li>Secondary:
+<ul>
+<li>당뇨 유무, ITT vs Per-protocol 분석법 차이 모두 결과에 영향 x</li>
+<li>PCI 성공률도 유의한 차이 x(50.1% vs 54.8%)</li>
+<li>프로토콜에 명시된 adenosine 대신 nicorandil 사용한 288 제외한 사후분석(post hoc)에서도 일관된 결과</li>
+</ul></li>
+</ul>
 </section>
 <section id="limitations" class="slide level2">
 <h2>Limitations</h2>
 <ul>
-<li><strong>Open-label</strong>: 시술자가 배정군 인지 → 판단에 영향 가능</li>
-<li>두 군 PCI 기준 자체가 다름 → 순수 head-to-head 비교인지 애매</li>
-<li>Margin 2.5%p의 임상적 정당성 논쟁 (Correspondence 참고)</li>
+<li><strong>Open-label</strong>: 시술자가 배정군 인지 → revascularization 여부 결정에 영향 가능</li>
+<li>두 군의 PCI 시행/성공 기준 자체가 다름 → 순수 head-to-head 비교인지 애매
+<ul>
+<li>IVUS군의 PCI 시행률이 유독 높았던 것: IVUS 자체의 우수성 x, 현재 IVUS의 기준이 상대적으로 느슨</li>
+</ul></li>
+<li>Noninferiority margin 2.5%p의 임상적 정당성 논쟁</li>
 <li>2차 outcome 다중비교 미보정</li>
-<li>저위험군(SYNTAX&lt;10)만 포함, 전원 아시아인 → 일반화 제한</li>
+<li>연구대상: 저위험군(SYNTAX&lt;10)만 포함, 전원 아시아인 → 일반화 제한</li>
 </ul>
 </section>
-<section id="correspondence-핵심" class="slide level2">
-<h2>Correspondence 핵심</h2>
+<section id="correspondence" class="slide level2">
+<h2>Correspondence</h2>
 <ul>
-<li>Dr.&nbsp;Bittl: “PCI 하고 싶으면 IVUS, 하기 싫으면 FFR 잰다” — 임상 현실 지적</li>
-<li>ACS 환자 subgroup 분석 요청 → 저자: 큰 차이 없음(10.0% vs 10.3%)</li>
+<li>“PCI 하고 싶으면 IVUS, 하기 싫으면 FFR 잰다”</li>
+<li>검사 선택 자체가 이미 시술자의 의도 반영(현실적 문제)</li>
+<li>ACS(급성관상동맥증후군) <sup>1</sup> 환자 따로 subgroup 분석 요청 → 저자: 큰 차이 없음(10.0% vs 10.3%)</li>
 </ul>
-</section>
-<section id="take-home" class="slide level2">
-<h2>Take-home</h2>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>연구 대상의 약 30%. FFR은 원래 안정형 관상동맥질환에서 검증된 지표</p></li></ol></aside></section>
+<section id="take-home-message" class="slide level2">
+<h2>Take-home Message</h2>
 <ul>
-<li>FFR-guided는 IVUS-guided 대비 <strong>비열등</strong>, 스텐트는 유의하게 적게 사용</li>
+<li>Intermediate stenosis 환자에서 FFR-guided는 IVUS-guided 대비 <strong>비열등</strong>, 스텐트는 유의하게 적게 사용</li>
 <li>우열 문제라기보다 <strong>상호보완적 도구</strong>로 해석</li>
 <li>통계적으로 꼼꼼하나(Schoenfeld 검증, ITT+PP 이중 확인) open-label/margin 설정은 해석 시 유의</li>
 </ul>
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>FLAVOUR</p>
 </div>
 </div></div>
 
