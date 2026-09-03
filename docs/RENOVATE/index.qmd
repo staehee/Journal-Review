@@ -133,11 +133,13 @@ format:
 - Fine-Gray, Cox 모형 모두 "두 그룹 사이의 위험 차이(sHR/HR)가 추적 기간 내내 비슷하게 유지된다"는 전제
 - Schoenfeld residual test로 확인
 
-## Subgroup 분석
+## Subgroup 분석 {.scrollable}
 
 - 성별, 나이, 당뇨 유무, lesion 종류 등 하위그룹별로도 결과 확인 → 대부분 전체 결과와 같은 방향
 - 다만 interaction test(하위그룹 간 효과가 통계적으로 진짜 다른지 검증)는 논문에 제시되지 않음
 - → 그래프 상 숫자 차이가 있어보여도 "이 하위그룹은 효과가 없다/더 크다"고 단정 x
+
+![](RENOVATE%20Figure2.png){.nostretch fig-align="center" width="100%"}
 
 ## Multiplicity
 
@@ -167,10 +169,11 @@ format:
 ::: panel-tabset
 ### Table 1
 
-
+![](RENOVATE%20Table1.png){.nostretch fig-align="center" width="100%"}
 
 ### Table 2
 
+![](RENOVATE%20Table2.png){.nostretch fig-align="center" width="100%"}
 
 :::
 
@@ -180,9 +183,13 @@ format:
 - sHR = 0.64 (95% CI 0.45–0.89, P=0.008)
 - Cox/KM으로 다시 계산해도 같은 방향의 결과 확인 (민감도 분석)
 
+![](RENOVATE%20Figure1.png){.nostretch fig-align="center" width="100%"}
+
 ## Secondary Outcome {.scrollable}
 
 - 다중비교 미보정 상태 → 특히 사건 수 적은 항목(스텐트혈전증)은 CI 매우 넓음, 참고용
+
+![](RENOVATE%20Table3.png){.nostretch fig-align="center" width="100%"}
 
 ## Exploratory
 
