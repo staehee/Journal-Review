@@ -1,6 +1,6 @@
 ---
 title: "Imaging- or Angiography-Guided PCI"
-subtitle: "RENOVATE Trial (NEJM 2023) Journal Review"
+subtitle: "RENOVATE-COMPLEX-PCI Trial (NEJM 2023) Journal Review"
 author: "Taehee Shin"
 format:
   revealjs:
@@ -58,7 +58,7 @@ format:
 ## Randomization
 
 - Imaging 군: Angiography 군 = 2:1 무작위배정 (총 1092명 vs 547명)
-- **Stratified**: 임상양상(안정형 vs ACS(급성관상동맥증후군)) × 참여기관(20개 병원) 기준으로 층을 나눠 각 층 안에서 배정
+- **Stratified**: 임상양상(안정형 vs ACS(급성관상동맥증후군)) × 참여기관(20개 병원) 기준으로 층을 나눠 각 층 안에서 배정 → 분석 때 보정변수로 반영
 - Web 기반 프로그램으로 배정 순서를 사전에 알 수 없게 함(concealed allocation)
 - **Permuted block randomization**을 각 층 내에서 적용(블록 크기는 무작위/비공개 → 시술자가 다음 배정을 예측하지 못하게 함)
 
@@ -78,170 +78,134 @@ format:
 
 # 통계방법론
 
-## Sample Size {.scrollable}
+## Sample Size
 
-Noninferiority trial. 두 비율(proportion) 비교:
-$$
-n_{\text{per group}} = \frac{(z_{1-\alpha} + z_{1-\beta})^2 \left[p_1(1-p_1) + p_2(1-p_2)\right]}{\left[M + (p_1 - p_2)\right]^2}
-$$
+- 연간 사건 발생률 예상: Imaging = 3.6% vs Angiography = 6.0%
+- 검정력 90%, 유의수준 5%
+- 결과: 1620명 필요 → 실제 1639명 등록
 
-- $p_1$ = IVUS군 가정 사건율 (12%), $p_2$ = FFR군 가정 사건율 (10%)
-- $M$ = noninferiority margin (2.5%p)
-- $z_{1-\alpha}$: 단측 5% → 1.645, $z_{1-\beta}$: power 90% → 1.282
+## Competing risk
 
-$$
-n = \frac{(1.645+1.282)^2 [0.10(0.90)+0.12(0.88)]}{(0.025+0.02)^2} \approx 828 \text{명/군}
-$$
+- TVF(Primary 평가변수)에는 심장사망이 포함
+- 그런데 만약 어떤 환자가 심장이 아닌 다른 이유(eg. 암, 사고)로 먼저 사망했다면?
+  → 그 사람은 그 이후로 심근경색/재시술을 겪을 수 없는 상태
+- **Competing risk(경쟁위험)**: 관심 있는 사건(TVF)이 일어나기도 전에 그 사건 발생 자체를 원천적으로 막아버리는 다른 사건
 
-## Statistical Analysis
+## Competing risk {.scrollable}
 
-- 범주형 변수 비교 → **Chi-square test**
-- 연속형 변수 비교 → **T-test**
-- Primary endpoint → **Log-rank test** + **Cox proportional-hazards regression** 병행
-  - Log-rank: 두 Kaplan-Meier 곡선 자체를 비모수적으로 비교
-  - Cox: site, 당뇨 유무를 보정한 회귀모형으로 HR 산출
-  - 두 방법이 유사한 결론을 내는지 교차 확인하는 역할
+- 만약 이 문제를 무시하고 계산한다면..
 
-## Kaplan-Meier {.scrollable}
+| 시점 | 환자 | 무슨 일이 있었나 |
+|---|---|---|
+| 1.5년 | A | 심장이 아닌 다른 이유로 사망 |
+| 2년 | B | Target-vessel failure 발생 |
+| 2.5년 | C | 심장이 아닌 다른 이유로 사망 |
+| 3년 | D | Target-vessel failure 발생 |
+| — | 나머지 6명 | 3년 동안 아무 일 없음 |
 
-- **Kaplan-Meier**: 시간에 따라 특정 사건 없이 생존한 비율을 보여주는 계단식 그래프. 중도탈락(censoring) 환자도 정보 손실 없이 반영
-$$
-\hat{S}(t) = \prod_{t_i \le t} \left(1 - \frac{d_i}{n_i}\right)
-$$
-- $t_i$: 사건 발생 시점들, $d_i$: $t_i$ 시점의 사건 수, $n_i$: $t_i$ 직전 위험집단 크기(at risk)
-- **Product-limit estimator**: 매 사건 시점마다 "그때까지 생존할 조건부 확률"을 곱해나감
-- **중도절단(censoring)**: 추적 소실. 24개월 이전 종료 환자는 $n_i$에는 포함되지만 $d_i$엔 안 잡힘
-  → 정보를 버리지 않고 "그 시점까지는 무사했다"는 사실만 반영
-- 신뢰구간은 보통 **Greenwood's formula**로 분산 추정 후 산출
-
-## Cox model {.scrollable}
-
-- **Cox 비례위험모형**: 그룹 간 사건 발생 위험을 시간에 따라 비교, 결과값 = **Hazard Ratio(HR)**
-$$
-h(t \mid X) = h_0(t) \cdot \exp(\beta_1 X_1 + \beta_2 X_2 + \cdots)
-$$
-- $h_0(t)$: baseline hazard (특정 분포 가정 안 함 → semi-parametric)
-- $X_1$ = 치료군(FFR=1, IVUS=0) 등 공변량
-- $\beta_1$을 **partial likelihood**를 최대화해서 추정 (baseline hazard는 추정 안 하고 소거)
-- $\text{HR} = e^{\hat\beta_1}$ → 이 연구: $e^{\hat\beta_1}=0.96$
+- 만약 A,C의 사망을 censoring으로 단순 처리하면: TVF 발생률 = 23.8%
+- 그런데 실제로 A,C는 애초에 TVF를 겪을 기회조차 없었던 사람들 → TVF 발생률 = 20.0%
+- 사망을 단순처리하면 실제보다 더 높게(과대추정) 나옴
+- 이 3.8%p 차이가 바로 competing risk를 무시했을 때 생기는 통계적 왜곡
 
 
-## Cox model {.scrollable}
+## Fine-Gray 모형
 
-- **Random effect (frailty) 사용 이유**
-  - Site 18개 각각 dummy 변수 → 자유도 낭비 + 과적합
-  - 대신 site별 **frailty term**(공유 무작위효과)을 hazard에 곱해 병원 간 이질성을 압축적으로 보정
-  - 당뇨 유무도 같은 방식으로 random effect 처리
+- Competing risk로 인한 왜곡을 계산 과정에서 바로잡아 실제로 그 사건이 일어날 진짜 확률(누적발생률)을 정확하게 추정하는 방법
+- 이 방법으로 계산한 값 = **CIF(Cumulative Incidence Function)**
+- 두 그룹 사이의 차이를 나타내는 숫자 = **Subhazard Ratio(sHR)**: 이 사건이 실제로 일어날 위험이 몇 배인가
+  - HR과 다름
+  
+- 결과: sHR = 0.64 (95% CI 0.45-0.89, P=0.008)
+  → Imaging군에서 TVF가 실제로 발생할 확률이 Angiography군보다 약 36% 낮음
 
-  - HR 0.96 → FFR군 위험이 IVUS군 대비 4% 낮음(거의 동일)
-  - 연구 기관(site), 당뇨 유무를 random effect로 보정
 
-![](FLAVOUR%20Figure1.png){.nostretch fig-align="center" width="100%"}
+## Fine-Gray 모형 {.scrollable}
 
-## 비례위험 가정 검증
+| | 원래 흔히 쓰는 방법 (Cox 모형) | 이 연구가 주로 쓴 방법 (Fine-Gray) |
+|---|---|---|
+| 다른 이유로 죽은 사람을 어떻게 처리하나 | 그 시점에서 그냥 계산에서 빼버림 | 다른 이유로 죽은 사람도 "고려 대상"에 남겨서 왜곡을 보정 |
+| 어떤 질문에 답하나 | 지금 이 순간 살아있는 사람들만 놓고 볼 때, 위험이 얼마나 다른가 | 결국 실제로 이 사건을 겪게 될 사람이 몇 %인가 |
+| 이 연구에 더 적합한 이유 | — | 환자·의사가 궁금한 건 "실제로 몇 %가 이 일을 겪는가"이기 때문 |
 
-- Cox 모형: "HR이 시간 내내 일정하게 유지"된다는 전제 위에서만 성립
-- **Schoenfeld residual test**로 확인 → P=0.99 (가정 위반 근거 없음)
+- 민감도 분석으로 Cox 모형 사용. 결과는 일관
 
-## 비열등성 판정 방법 {.scrollable}
+- Fine-Gray, Cox 모형 모두 "두 그룹 사이의 위험 차이(sHR/HR)가 추적 기간 내내 비슷하게 유지된다"는 전제
+- Schoenfeld residual test로 확인
 
-- 차이(FFR−IVUS) = −0.4%p
-- 1-sided 95% CI 상한 = 1.8%p (< 2.5%p) → 통과
-- 1-sided **97.5%** CI 상한 = 2.2%p (< 2.5%p) → 더 보수적 기준으로도 통과
+## Subgroup 분석
 
-- **왜 단측(1-sided) 5%인가**
-  - 표준적인 noninferiority trial: 단측 **2.5%**(양측 5%에 대응) 사용이 관행
-  - 해당 연구: 단측 **5.0%** 사용 → 사실상 양측 10%에 해당하는 **더 관대한 기준**
-  - 저자 근거: 의료기기 평가에서 종종 쓰이는 관행적 기준
-  - 보완: 더 보수적인 **단측 97.5% CI**(=단측 2.5%에 해당)도 함께 보고
+- 성별, 나이, 당뇨 유무, lesion 종류 등 하위그룹별로도 결과 확인 → 대부분 전체 결과와 같은 방향
+- 다만 interaction test(하위그룹 간 효과가 통계적으로 진짜 다른지 검증)는 논문에 제시되지 않음
+- → 그래프 상 숫자 차이가 있어보여도 "이 하위그룹은 효과가 없다/더 크다"고 단정 x
 
-## Noninferiority P-value 산출 원리 {.scrollable}
+## Multiplicity
 
-- 검정통계량:
-$$
-Z = \frac{M - (\hat p_{FFR} - \hat p_{IVUS})}{SE(\hat p_{FFR}-\hat p_{IVUS})}
-$$
-- $M$=2.5%p, 관찰된 차이 = $-0.4\%p$
-- $P = 1-\Phi(Z)$ (표준정규분포 상측확률)
+- Secondary endpoint를 10개 이상 각각 따로 검정 (사망, MI, 재시술, 스텐트혈전증 등)
+- 검정을 많이 할수록 유의미해 보이는 결과가 나올 확률 ↑
+- 이런 우연성 보정하지 않았다고 명시
+- → Secondary endpoint(특히 사건 수 적은 스텐트혈전증 등)는 확정적 근거가 아닌 **참고용(hypothesis-generating)**으로만 해석
 
-- CI와 P-value는 수학적으로 동치:
-  **CI 상한이 margin보다 작다 ⟺ P<0.05(해당 α)** — 같은 정보를 두 방식으로 표현한 것
+## ITT
 
-- **주의**: P=0.01은 **절대위험차(KM 기반)**에 대한 검정.
-  HR=0.96(Cox 기반)은 별도의 CI(상한 1.27/1.35)로 제시 → **독립적으로 일관된 결론**으로 결과 보강
+- 배정대로 시술받지 못한 환자 존재 (Imaging군 14명은 영상 미사용, Angiography군 13명은 영상 사용)
+- 그래도 처음 배정된 그룹 기준으로 분석
+- 무작위배정의 장점(두 그룹이 공정하게 비교 가능하다는 것)을 그대로 유지하기 위함
 
-## ITT vs Per-protocol
-
-- **ITT(Intention-to-Treat)**: 처음 배정된 군 그대로 분석. 중간에 프로토콜을 어겼거나 실제도 다르게 치료받은 환자도 배정된 군으로 계산 → 무작위 배정의 장점 유지
-  - 표준적 1차 분석법 (주 분석)
-- **Per-protocol**: 프로토콜 잘 지킨 환자만 남겨 분석 (민감도 분석으로 병행)
-- 두 결과 거의 동일 (8.1% vs 8.5% / 8.2% vs 8.7%) → 결과 신뢰도↑
-
-## 결측치 처리
-
-- Endpoint 결측치는 **제거**(complete case analysis)
-- 민감도 분석으로 결측치의 영향을 별도 확인
-- 실제 follow-up 완료율 **99.2%** (14명만 손실) → 결측 자체가 결과에 미친 영향은 제한적
-
-## Multiplicity Problem
-
-- Multiplicity(다중비교): 한 연구에서 여러 개의 2차 outcome(개별 사망률, MI 등)을 동시 검정 → 우연히 유의미해 보이는 결과가 나올 확률↑
-- 저자 스스로 **multiplicity 보정 안 했다고 명시**
-- → 2차 outcome CI는 확정적 근거 아님, 가설 생성용으로만 해석해야
 
 # Results
 
-## Baseline 특성 {.scrollable}
+## Baseline/Procedural {.scrollable}
 
-- 두 군의 평균 연령, 당뇨병 유병률 등 기본 특성이 잘 균형잡혀 있음
+- 2018.05~2021.05 등록, 두 그룹 기저특성(나이, 성별, 병력 등) 균형 잡힘
+- Imaging군: IVUS 73.3%, OCT 25.5% 사용, 전체 시술 성공률 98.4%
+- Imaging군에서 non-compliant balloon 추가 확장 더 빈번 (60.4% vs 45.5%)
+- 시술 관련 합병증 발생률은 두 군 비슷 (3.4% vs 3.3%)
 
-![](FLAVOUR%20Table1.png){.nostretch fig-align="center" width="100%"}
+## Baseline/Procedural {.scrollable}
 
-## PCI 시행률
+::: panel-tabset
+### Table 1
 
-- lesion 길이, 혈관 직경, 협착 정도는 유의한 차이 x
-- FFR 44.4% vs IVUS 65.3% (기준이 다르므로 당연)
-- 다만 실제로 시술받은 환자 내 스텐트 개수/길이는 유사
+
+
+### Table 2
+
+
+:::
 
 ## Primary Outcome {.scrollable}
 
-- FFR 8.1% vs IVUS 8.5%, HR 0.96
-- 비열등성 마진(2.5%p) 이내 → **noninferior**(P=0.01)
+- TVF: 7.7% (Imaging) vs 12.3% (Angiography): **CIF(경쟁위험 보정 누적발생률)**로 계산된 3년 시점 값
+- sHR = 0.64 (95% CI 0.45–0.89, P=0.008)
+- Cox/KM으로 다시 계산해도 같은 방향의 결과 확인 (민감도 분석)
 
-![](FLAVOUR%20Table3.png){.nostretch fig-align="center" width="100%"}
+## Secondary Outcome {.scrollable}
 
-## Secondary Outcome
+- 다중비교 미보정 상태 → 특히 사건 수 적은 항목(스텐트혈전증)은 CI 매우 넓음, 참고용
 
-  - 당뇨 유무, ITT vs Per-protocol 분석법 차이 모두 결과에 영향 x
-  - PCI 성공률도 유의한 차이 x(50.1% vs 54.8%)
-  - 프로토콜에 명시된 adenosine 대신 nicorandil 사용한 288 제외한 사후분석(post hoc)에서도 일관된 결과
+## Exploratory
+
+- Imaging군 중 stent optimization 성공 / 실패 / Angiography군의 TVF 발생률: 6.0% / 8.9% / 12.3%
+- 영상을 쓰더라도 실제로 최적화가 잘 됐을 때 효과가 가장 큼
+- → "영상 자체"보다 "영상을 통한 최적화 달성"이 핵심일 가능성
+
+## Discussion
+
+- 이전 연구들: Imaging 이점 = 주로 재시술 감소
+- 해당 연구: 오히려 심장사망·심근경색이 37% 감소 — 결이 다름
+- 큰 표본 수, 적은 crossover, 긴 추적기간, 엄격한 환자 선정이 강점
 
 ## Limitations
 
-- **Open-label**: 시술자가 배정군 인지 → revascularization 여부 결정에 영향 가능
-- 두 군의 PCI 시행/성공 기준 자체가 다름 → 순수 head-to-head 비교인지 애매
-  - IVUS군의 PCI 시행률이 유독 높았던 것: IVUS 자체의 우수성 x, 현재 IVUS의 기준이 상대적으로 느슨
-- Noninferiority margin 2.5%p의 임상적 정당성 논쟁
-- 2차 outcome 다중비교 미보정
-
-## Limitations
-
-- 연구대상: 저위험군(SYNTAX<10)만 포함, 전원 아시아인 → 일반화 제한
-- Plaque의 성상(characteristics)은 PCI 기준에 반영되지 않음
-- FFR/IVUS 외 nonhyperemic pressure ratio, OCT, NIRS-IVUS 등과의 비교는 없음
-- FFR+IVUS **병용군**이 연구에 없어, 두 검사를 함께 쓰는 전략의 효과는 확인 불가
-
-## Correspondence
-
-- "PCI 하고 싶으면 IVUS, 하기 싫으면 FFR 잰다"
-  → 검사 선택 자체가 이미 시술자의 의도 반영(현실적 문제)
-- IVUS군 사망률이 더 높음(1.3% vs 2.3%) - 출혈이 원인 아닌가?
-  - **다중비교 미보정** 상태의 secondary outcome이라 과대해석 주의
-  - 저자: 출혈은 실제로 더 있었으나, 원래 출혈 위험군에서 발생
-- ACS(급성관상동맥증후군) ^[연구 대상의 약 30%. FFR은 원래 안정형 관상동맥질환에서 검증된 지표] 환자 따로 subgroup 분석 요청 → 저자: 큰 차이 없음(10.0% vs 10.3%)
+- Open-label: 시술 의사가 배정군 인지 (편향 가능성)
+- Imaging군 stent optimization 달성률 45.4%로 낮음
+- 두 군의 optimization 판단 기준 자체가 다름 (직접 비교 한계)
+- 전원 동아시아인, 절반 이상 단일기관 등록 → 일반화 제한
+- Imaging 장비 추가 비용 → cost-effectiveness 분석 필요
 
 ## Take-home
 
-- Intermediate stenosis 환자에서 FFR-guided는 IVUS-guided 대비 **비열등**, 스텐트는 유의하게 적게 사용
-- 우열 문제라기보다 **상호보완적 도구**로 해석
-- 통계적으로 꼼꼼하나(Schoenfeld 검증, ITT+PP 이중 확인) open-label/margin 설정은 해석 시 유의
+- Complex lesion 환자에서 Imaging-guided PCI는 Angiography-guided보다 TVF를 유의하게 감소
+- Primary endpoint에 사망 포함 → competing risk 발생 → Fine-Gray로 보정
+- Primary 결과는 방법론적으로 탄탄, Secondary/Subgroup은 과잉해석 주의
