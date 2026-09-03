@@ -10,7 +10,7 @@ format:
 
 ## Glossary
 
-- **CAD(Coronary Artery Disease)**: Coronary Artery(관상동맥)이 plaque(죽상판) 축적으로 좁아지는 질병
+- **CAD(Coronary Artery Disease)**: Coronary Artery(관상동맥)가 plaque(죽상판) 축적으로 좁아지는 질병
 - **Ischemia**: 허혈. CAD로 인해 심장 근육에 혈액 공급이 부족해지는 상태
 - **PCI(Percutaneous Coronary Intervention)**: 이를 stent나 풍선으로 넓혀주는 시술. 경피적 관상동맥 중재술
 - **Revascularization**: 재혈관화. 좁아지거나 막힌 혈관으로 인해 피가 통하지 않는 부위에 혈류를 다시 회복시키는 치료법
@@ -39,7 +39,7 @@ format:
 - 사전 공개 변경. 실제 데이터 확인 전에 이뤄짐
 
 
-## Method — 연구 설계
+## Method — Design
 
 - Investigator-initiated
 - Prospective
@@ -48,7 +48,7 @@ format:
 - Multinational(한/중 18개 기관)
 - Noninferiority trial
 
-## Method — 대상
+## Method — Patients
 
 - 19세 이상의 intermediate stenosis 발견 & 표적혈관 직경이 2.5mm 이상인 저위험군 환자 대상
 - 약물 과민성, 출혈 위험, 기대여명 2년 이내 등은 제외
@@ -159,7 +159,7 @@ $$
 - 1-sided 95% CI 상한 = 1.8%p (< 2.5%p) → 통과
 - 1-sided **97.5%** CI 상한 = 2.2%p (< 2.5%p) → 더 보수적 기준으로도 통과
 
-- **왜 단측(1-sided) 5%인가**
+- **왜 단측 5%인가**
   - 표준적인 noninferiority trial: 단측 **2.5%**(양측 5%에 대응) 사용이 관행
   - 해당 연구: 단측 **5.0%** 사용 → 사실상 양측 10%에 해당하는 **더 관대한 기준**
   - 저자 근거: 의료기기 평가에서 종종 쓰이는 관행적 기준
