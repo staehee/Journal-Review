@@ -6,6 +6,7 @@ format:
   revealjs:
     footer: "RENOVATE"
     transition: slide
+    slide-number: true
 ---
 
 ## Glossary
