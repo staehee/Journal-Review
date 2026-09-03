@@ -71,7 +71,7 @@ format:
 | | FFR군 | IVUS군 |
 |---|---|----|
 | PCI 시행 | FFR ≤ 0.80 | MLA(최소내강면적) ≤3mm² 또는 3~4mm² & plaque>70% |
-| PCI 성공 | 시술 후 FFR ≥0.88 또는 stent 양끝 FFR차 <0.05 | plaque≤55% & MSA(최소스텐드면적)≥5.5mm² |
+| PCI 성공 | 시술 후 FFR ≥0.88 또는 stent 양끝 FFR차 <0.05 | plaque≤55% & MSA(최소스텐트면적)≥5.5mm² |
 
 ## Endpoint
 
