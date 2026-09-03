@@ -69,8 +69,8 @@ format:
 
 | | FFR군 | IVUS군 |
 |---|---|----|
-| PCI 시행 | FFR ≤ 0.80 | MLA(최소내강면적)) ≤3mm² 또는 3~4mm² & plaque>70% |
-| PCI 성공 | 시술 후 FFR ≥0.88 또는 stent 양끝 FFR차 <0.05 | plaque≤55% & MSA≥5.5mm² |
+| PCI 시행 | FFR ≤ 0.80 | MLA(최소내강면적) ≤3mm² 또는 3~4mm² & plaque>70% |
+| PCI 성공 | 시술 후 FFR ≥0.88 또는 stent 양끝 FFR차 <0.05 | plaque≤55% & MSA(최소스텐드면적)≥5.5mm² |
 
 ## Endpoint
 
@@ -224,7 +224,7 @@ $$
 
   - 당뇨 유무, ITT vs Per-protocol 분석법 차이 모두 결과에 영향 x
   - PCI 성공률도 유의한 차이 x(50.1% vs 54.8%)
-  - 프로토콜에 명시된 adenosine 대신 nicorandil 사용한 288 제외한 사후분석(post hoc)에서도 일관된 결과
+  - 프로토콜에 명시된 adenosine 대신 nicorandil 사용한 288명 제외한 사후분석(post hoc)에서도 일관된 결과
 
 ## Limitations
 
