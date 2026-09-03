@@ -145,7 +145,7 @@ Taehee Shin
 <section id="glossary" class="slide level2">
 <h2>Glossary</h2>
 <ul>
-<li><strong>CAD(Coronary Artery Disease)</strong>: Coronary Artery(관상동맥)이 plaque(죽상판) 축적으로 좁아지는 질병</li>
+<li><strong>CAD(Coronary Artery Disease)</strong>: Coronary Artery(관상동맥)가 plaque(죽상판) 축적으로 좁아지는 질병</li>
 <li><strong>Ischemia</strong>: 허혈. CAD로 인해 심장 근육에 혈액 공급이 부족해지는 상태</li>
 <li><strong>PCI(Percutaneous Coronary Intervention)</strong>: 이를 stent나 풍선으로 넓혀주는 시술. 경피적 관상동맥 중재술</li>
 <li><strong>Revascularization</strong>: 재혈관화. 좁아지거나 막힌 혈관으로 인해 피가 통하지 않는 부위에 혈류를 다시 회복시키는 치료법</li>
@@ -178,8 +178,8 @@ Taehee Shin
 <li>사전 공개 변경. 실제 데이터 확인 전에 이뤄짐</li>
 </ul>
 </section>
-<section id="method-연구-설계" class="slide level2">
-<h2>Method — 연구 설계</h2>
+<section id="method-design" class="slide level2">
+<h2>Method — Design</h2>
 <ul>
 <li>Investigator-initiated</li>
 <li>Prospective</li>
@@ -189,13 +189,14 @@ Taehee Shin
 <li>Noninferiority trial</li>
 </ul>
 </section>
-<section id="method-대상" class="slide level2">
-<h2>Method — 대상</h2>
+<section id="method-patients" class="slide level2">
+<h2>Method — Patients</h2>
 <ul>
 <li><p>19세 이상의 intermediate stenosis 발견 &amp; 표적혈관 직경이 2.5mm 이상인 저위험군 환자 대상</p></li>
 <li><p>약물 과민성, 출혈 위험, 기대여명 2년 이내 등은 제외</p></li>
 <li><p>FFR군 vs.&nbsp;IVUS군 1:1 랜덤 배정</p></li>
 <li><p>당뇨 유무로 statified</p></li>
+<li><p>Study flow: 4355명 screening → 1682명 randomization(FFR 838, IVUS 844) → 24개월 추적 완료 99.2%(14명 추적 소실)</p></li>
 </ul>
 </section>
 <section id="randomization" class="slide level2">
@@ -274,6 +275,11 @@ n_{\text{per group}} = \frac{(z_{1-\alpha} + z_{1-\beta})^2 \left[p_1(1-p_1) + p
 <p><span class="math display">\[
 n = \frac{(1.645+1.282)^2 [0.10(0.90)+0.12(0.88)]}{(0.025+0.02)^2} \approx 828 \text{명/군}
 \]</span></p>
+<ul>
+<li>Margin(M)이 작을수록 → n 커짐: 두 전략의 작은 차이까지 더 정밀하게 구분해야 함</li>
+<li>사건 발생률의 분산이 클수록 → n 커짐: 결과의 흔들림이 클수록 더 많은 환자가 필요</li>
+<li>Power를 높게 잡을수록 → n 커짐: 실제 차이를 놓치지 않으려면 더 많은 정보가 필요</li>
+</ul>
 </section>
 <section id="statistical-analysis" class="slide level2">
 <h2>Statistical Analysis</h2>
@@ -322,6 +328,8 @@ h(t \mid X) = h_0(t) \cdot \exp(\beta_1 X_1 + \beta_2 X_2 + \cdots)
 <li><p>당뇨 유무도 같은 방식으로 random effect 처리</p></li>
 <li><p>HR 0.96 → FFR군 위험이 IVUS군 대비 4% 낮음(거의 동일)</p></li>
 <li><p>연구 기관(site), 당뇨 유무를 random effect로 보정</p></li>
+<li><p>HR 0.96의 단측 95% CI 상한 = 1.27, 단측 97.5% CI 상한 = 1.35</p></li>
+<li><p>두 값은 unadjusted/adjusted 구분이 아니라, 같은 covariate-adjusted Cox 모형에 서로 다른 신뢰수준을 적용한 결과</p></li>
 </ul></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
@@ -343,25 +351,15 @@ h(t \mid X) = h_0(t) \cdot \exp(\beta_1 X_1 + \beta_2 X_2 + \cdots)
 <li><p>차이(FFR−IVUS) = −0.4%p</p></li>
 <li><p>1-sided 95% CI 상한 = 1.8%p (&lt; 2.5%p) → 통과</p></li>
 <li><p>1-sided <strong>97.5%</strong> CI 상한 = 2.2%p (&lt; 2.5%p) → 더 보수적 기준으로도 통과</p></li>
-<li><p><strong>왜 단측(1-sided) 5%인가</strong></p>
+<li><p><strong>왜 단측 5%인가</strong></p>
 <ul>
 <li>표준적인 noninferiority trial: 단측 <strong>2.5%</strong>(양측 5%에 대응) 사용이 관행</li>
 <li>해당 연구: 단측 <strong>5.0%</strong> 사용 → 사실상 양측 10%에 해당하는 <strong>더 관대한 기준</strong></li>
 <li>저자 근거: 의료기기 평가에서 종종 쓰이는 관행적 기준</li>
 <li>보완: 더 보수적인 <strong>단측 97.5% CI</strong>(=단측 2.5%에 해당)도 함께 보고</li>
 </ul></li>
-</ul>
-</section>
-<section id="noninferiority-p-value-산출-원리" class="slide level2 scrollable">
-<h2>Noninferiority P-value 산출 원리</h2>
-<ul>
-<li><p>검정통계량: <span class="math display">\[
-Z = \frac{M - (\hat p_{FFR} - \hat p_{IVUS})}{SE(\hat p_{FFR}-\hat p_{IVUS})}
-\]</span></p></li>
-<li><p><span class="math inline">\(M\)</span>=2.5%p, 관찰된 차이 = <span class="math inline">\(-0.4\%p\)</span></p></li>
-<li><p><span class="math inline">\(P = 1-\Phi(Z)\)</span> (표준정규분포 상측확률)</p></li>
-<li><p>CI와 P-value는 수학적으로 동치: <strong>CI 상한이 margin보다 작다 ⟺ P&lt;0.05(해당 α)</strong> — 같은 정보를 두 방식으로 표현한 것</p></li>
-<li><p><strong>주의</strong>: P=0.01은 <strong>절대위험차(KM 기반)</strong>에 대한 검정. HR=0.96(Cox 기반)은 별도의 CI(상한 1.27/1.35)로 제시 → <strong>독립적으로 일관된 결론</strong>으로 결과 보강</p></li>
+<li><p>CI와 P-value는 수학적으로 동치: <strong>CI 상한이 margin보다 작다 ⟺ P&lt;0.05</strong></p></li>
+<li><p>P=0.01은 <strong>절대위험차(KM 기반)</strong> 검정; HR=0.96은 <strong>Cox 기반</strong> 별도 CI(단측 95% 상한 1.27 / 단측 97.5% 상한 1.35)로 제시되어 두 방법이 독립적으로 일관된 결론을 보강</p></li>
 </ul>
 </section>
 <section id="itt-vs-per-protocol" class="slide level2">
@@ -427,12 +425,18 @@ Z = \frac{M - (\hat p_{FFR} - \hat p_{IVUS})}{SE(\hat p_{FFR}-\hat p_{IVUS})}
 </figure>
 </div>
 </section>
-<section id="secondary-outcome" class="slide level2">
+<section id="secondary-outcome" class="slide level2 scrollable">
 <h2>Secondary Outcome</h2>
+<ul>
+<li><p>All-cause death: FFR 1.3% vs IVUS 2.3%; 절대차 −0.9%p (95% CI −2.2–0.3)</p></li>
+<li><p>Myocardial infarction: 1.9% vs 1.7%; 절대차 0.2%p (95% CI −1.1–1.5)</p></li>
+<li><p>Any revascularization: 5.7% vs 5.3%; 절대차 0.4%p (95% CI −1.8–2.6)</p></li>
+<li><p>각 CI는 multiplicity 보정 전 값 → 개별 항목은 효과 확정이 아니라 참고용</p>
 <ul>
 <li>당뇨 유무, ITT vs Per-protocol 분석법 차이 모두 결과에 영향 x</li>
 <li>PCI 성공률도 유의한 차이 x(50.1% vs 54.8%)</li>
 <li>프로토콜에 명시된 adenosine 대신 nicorandil 사용한 288 제외한 사후분석(post hoc)에서도 일관된 결과</li>
+</ul></li>
 </ul>
 </section>
 <section id="limitations" class="slide level2">
